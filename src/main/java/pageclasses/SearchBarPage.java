@@ -22,12 +22,14 @@ public class SearchBarPage {
      * Methods
      */
 
-    public void course(String courseName) {
+    public ResultsPage course(String courseName) {
         WebElement searchField = driver.findElement(By.cssSelector(SEARCH_COURSE_FIELD));
         searchField.clear();
         searchField.sendKeys(courseName);
 
         WebElement searchButton = driver.findElement(By.cssSelector(SEARCH_COURSE_BUTTON));
         searchButton.click();
+
+        return new ResultsPage(driver);
     }
 }

@@ -29,12 +29,10 @@ public class AllCoursesTests {
     public void verifySearchCourse() {
         LoginPage login = new LoginPage(driver);
         login.open();
-        login.signInWith("test@email.com", "abcabc");
-        NavigationPage nav = new NavigationPage(driver);
+        NavigationPage nav = login.signInWith("test@email.com", "abcabc");
         nav.allCourses();
         SearchBarPage search = new SearchBarPage(driver);
-        search.course("rest api");
-        ResultsPage result = new ResultsPage(driver);
+        ResultsPage result = search.course("rest api");
         boolean searchResult = result.verifySearchResult();
         Assert.assertTrue(searchResult);
     }
